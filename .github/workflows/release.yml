@@ -4,6 +4,9 @@ on:
   push:
     branches: [master]
 
+permissions:
+  contents: write
+
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -14,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Extract version and changelog
         id: changelog
@@ -40,21 +45,16 @@ jobs:
       - name: Check if tag exists
         id: tagcheck
         run: |
-          if git rev-parse "refs/tags/${{ steps.changelog.outputs.version }}" >/dev/null 2>&1; then
+          if git rev-parse "refs/tags/v${{ steps.changelog.outputs.version }}" >/dev/null 2>&1; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Create tag
-        if: steps.tagcheck.outputs.exists == 'false'
-        run: |
-          git tag ${{ steps.changelog.outputs.version }}
-          git push origin ${{ steps.changelog.outputs.version }}
-
       - name: Create GitHub Release
         if: steps.tagcheck.outputs.exists == 'false'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.changelog.outputs.version }}
+          tag_name: v${{ steps.changelog.outputs.version }}
+          name: v${{ steps.changelog.outputs.version }}
           body: ${{ steps.changelog.outputs.notes }}
