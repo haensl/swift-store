@@ -1,7 +1,9 @@
 # swift-store
 
+![Version](https://img.shields.io/github/v/tag/haensl/swift-store)
 ![Swift](https://img.shields.io/badge/Swift-6-orange)
 ![Platforms](https://img.shields.io/badge/platforms-iOS%20macOS%20tvOS%20watchOS-blue)
+[![CI](https://github.com/haensl/swift-store/actions/workflows/tests.yml/badge.svg)](https://github.com/haensl/swift-store/actions/workflows/tests.yml)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 A lightweight, modern Redux-style store for Swift — built with Swift Concurrency in mind.
