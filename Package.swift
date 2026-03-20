@@ -28,6 +28,5 @@ let package = Package(
             name: "SwiftStoreTests",
             dependencies: ["SwiftStore"]
         ),
-    ],
-    swiftLanguageVersions: [.v6]
+    ]
 )
