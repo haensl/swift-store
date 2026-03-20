@@ -4,23 +4,30 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-store",
+    name: "SwiftStore",
+    platforms: [
+      .iOS(.v16),
+      .macOS(.v13),
+      .tvOS(.v16),
+      .watchOS(.v9)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "swift-store",
-            targets: ["swift-store"]
+            name: "SwiftStore",
+            targets: ["SwiftStore"]
         ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "swift-store"
+            name: "SwiftStore"
         ),
         .testTarget(
-            name: "swift-storeTests",
-            dependencies: ["swift-store"]
+            name: "SwiftStoreTests",
+            dependencies: ["SwiftStore"]
         ),
-    ]
+    ],
+    swiftLanguageVersions: [.v6]
 )
