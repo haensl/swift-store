@@ -124,12 +124,12 @@ extension StoreActor {
  */
 @MainActor
 public final class Store<T: AppState>: ObservableObject {
-  @Published private(set) var state: T
+  @Published public private(set) var state: T
   
   private let actor: StoreActor<T>
   private let middlewares: [Middleware<T>]
   
-  init(
+  public init(
     initialState: T,
     reducer: @escaping Reducer<T>,
     middlewares: [Middleware<T>] = []
