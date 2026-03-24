@@ -1,3 +1,6 @@
+## 1.0.3
+* [#5: Fix visibilities.](https://github.com/haensl/swift-store/issues/5)
+
 ## 1.0.2
 * [#3: Fix release.](https://github.com/haensl/swift-store/issues/3)
 
